@@ -1,0 +1,5 @@
+F:\datum\net\EFMysqlMvcIoc\Common\bin\Debug\Common.dll
+F:\datum\net\EFMysqlMvcIoc\Common\bin\Debug\Common.pdb
+F:\datum\net\EFMysqlMvcIoc\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+F:\datum\net\EFMysqlMvcIoc\Common\obj\Debug\Common.dll
+F:\datum\net\EFMysqlMvcIoc\Common\obj\Debug\Common.pdb
