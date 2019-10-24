@@ -28,7 +28,7 @@ namespace DAL.Base
             //1.0 参数合法性验证
             if (model == null)
             {
-                throw new Exception("BaseRepository泛型类中，新增操作的实体不能为空");
+                throw new Exception("实体不能为空");
             }
 
             //2.0 进行新增操作 
@@ -42,7 +42,7 @@ namespace DAL.Base
             //1.0 参数合法性验证
             if (model == null)
             {
-                throw new Exception("BaseRepository泛型类中，删除操作的实体不能为空");
+                throw new Exception("实体不能为空");
             }
             _dbset.Attach(model);
             _dbset.Remove(model);
@@ -62,12 +62,12 @@ namespace DAL.Base
             //1.0 参数合法性验证
             if (model == null)
             {
-                throw new Exception("BaseRepository泛型类中，编辑操作的实体不能为空");
+                throw new Exception("实体不能为空");
             }
 
             if (propertyNames == null || propertyNames.Length == 0)
             {
-                throw new Exception("BaseRepository泛型类中，编辑操作的属性数组必须至少有一个值");
+                throw new Exception("属性数组必须至少有一个字段名");
             }
 
             //2.0 将model追加到EF容器中的

@@ -83,12 +83,12 @@ namespace Service.Impl
         /// 修改
         /// </summary>
         /// <returns></returns>
-        public Result UpdateUser(User user)
+        public Result UpdateUser(User user, string[] propertyNames=null)
         {
             var result = new Result();
             try
             {
-                userDAL.Update(user, null);
+                userDAL.Update(user, propertyNames);
                 userDAL.SaveChanges();
                 result.Successed();
             }
@@ -98,6 +98,31 @@ namespace Service.Impl
             }
             return result;
             
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public Result UpdateUserAll(User user)
+        {
+            var result = new Result();
+            try
+            {
+                var entity = userDAL.QueryEntity(s => s.Id == user.Id);
+                entity.Phone = user.Phone;
+                entity.RealName = user.RealName;
+                entity.Email = user.Email;
+
+                userDAL.SaveChanges();
+                result.Successed();
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+
         }
 
         /// <summary>

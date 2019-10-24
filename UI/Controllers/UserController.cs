@@ -42,5 +42,36 @@ namespace UI.Controllers
             var data = userService.AddUser(user);
             return Json(data);
         }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpdateUser(User user)
+        {
+            string[] propertyNames = { "RealName", "Email" };
+            var data = userService.UpdateUser(user, propertyNames);
+            return Json(data);
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpdateUserAll(User user)
+        {
+            var data = userService.UpdateUserAll(user);
+            return Json(data);
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DeleteUser(User user)
+        {
+            var data = userService.DeleteUser(user);
+            return Json(data);
+        }
     }
 }

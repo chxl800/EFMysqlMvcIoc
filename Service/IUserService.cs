@@ -34,8 +34,13 @@ namespace Service
         /// 修改
         /// </summary>
         /// <returns></returns>
-        Result UpdateUser(User user);
+        Result UpdateUser(User user, string[] propertyNames = null);
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        Result UpdateUserAll(User user);
 
         /// <summary>
         /// 删除
