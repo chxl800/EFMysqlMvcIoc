@@ -1,5 +1,0 @@
-F:\datum\net\EFMysqlMvcIoc\Model\bin\Debug\Model.dll
-F:\datum\net\EFMysqlMvcIoc\Model\bin\Debug\Model.pdb
-F:\datum\net\EFMysqlMvcIoc\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
-F:\datum\net\EFMysqlMvcIoc\Model\obj\Debug\Model.dll
-F:\datum\net\EFMysqlMvcIoc\Model\obj\Debug\Model.pdb
