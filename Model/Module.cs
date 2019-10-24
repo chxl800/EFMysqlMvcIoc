@@ -1,11 +1,10 @@
 ﻿using System;
-
 namespace Model
 {
     /// <summary>
-    /// 用户信息
+    /// 权限模块
     /// </summary>
-    public class User
+    public class Module
     {
         /// <summary>
         /// 
@@ -14,35 +13,39 @@ namespace Model
         /// <summary>
         /// 
         /// </summary>   
-        public string UserName { get; set; }
+        public string ParentId { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public string Password { get; set; }
+        public string ModuleName { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public string Salt { get; set; }
+        public string PowerName { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public int UserType { get; set; }
+        public string NavCls { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public string RealName { get; set; }
+        public int ModuleType { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public string Email { get; set; }
+        public string Url { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public string Phone { get; set; }
+        public int OrderBy { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public int Status { get; set; }
+        public string Remark { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>   
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>   
@@ -62,14 +65,11 @@ namespace Model
         /// <summary>
         /// 
         /// </summary>   
-        public string Remark { get; set; }
+        public int Status { get; set; }
         /// <summary>
         /// 
         /// </summary>   
-        public DateTime? LoginTime { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>   
-        public string IP { get; set; }
+        public bool IsHome { get; set; }
     }
 }
+

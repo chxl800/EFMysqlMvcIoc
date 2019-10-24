@@ -26,5 +26,17 @@ namespace Service.Impl
             List<User> users= userDAL.QueryWhere(s => true);
             return users;
         }
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <returns></returns>
+        public List<User> GetEntity(int id)
+        {
+
+            List<User> users = userDAL.QueryWhere(s => true);
+            return users;
+        }
     }
 }
