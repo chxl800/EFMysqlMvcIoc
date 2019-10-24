@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.DTO;
 using DAL;
 using Model;
 
 namespace Service.Impl
 {
+    /// <summary>
+    /// 用户
+    /// </summary>
     public class UserService : IUserService
     {
         private IUserDAL userDAL;
@@ -20,23 +24,101 @@ namespace Service.Impl
         /// 查询全部用户
         /// </summary>
         /// <returns></returns>
-        public List<User> GetUsers()
+        public Result<List<User>> GetUsers(User user = null)
         {
-
-            List<User> users= userDAL.QueryWhere(s => true);
-            return users;
+            var result = new Result<List<User>>();
+            try
+            {
+                var users = userDAL.QueryWhere(s => true);
+                result.Successed(users);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
         }
-
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <returns></returns>
-        public List<User> GetEntity(int id)
+        public Result<User> GetEntity(User user)
         {
+            var result = new Result<User>();
+            try
+            {
+                var entity=userDAL.QueryEntity(s => s.Id == user.Id);
+                result.Successed(entity);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+        }
 
-            List<User> users = userDAL.QueryWhere(s => true);
-            return users;
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <returns></returns>
+        public Result AddUser(User user)
+        {
+            var result = new Result();
+            try
+            {
+                userDAL.Add(user);
+                userDAL.SaveChanges();
+                result.Successed();
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result; 
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public Result UpdateUser(User user)
+        {
+            var result = new Result();
+            try
+            {
+                userDAL.Update(user, null);
+                userDAL.SaveChanges();
+                result.Successed();
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+            
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <returns></returns>
+        public Result DeleteUser(User user)
+        {
+            var result = new Result();
+            try
+            {
+                userDAL.Delete(user);
+                userDAL.SaveChanges();
+                result.Successed();
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+            
         }
     }
 }

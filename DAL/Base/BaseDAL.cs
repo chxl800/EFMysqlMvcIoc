@@ -54,7 +54,7 @@ namespace DAL.Base
         /// 编辑，约定model 是一个自定义的实体，没有追加到EF容器中的
         /// </summary>
         /// <param name="model"></param>
-        public virtual void Edit(TEntity model, string[] propertyNames)
+        public virtual void Update(TEntity model, string[] propertyNames)
         {
             //0.0 关闭EF的实体属性合法性检查
             db.Configuration.ValidateOnSaveEnabled = false;
@@ -90,6 +90,16 @@ namespace DAL.Base
         public virtual List<TEntity> QueryWhere(Expression<Func<TEntity, bool>> where)
         {
             return _dbset.Where(where).ToList();
+        }
+
+        /// <summary>
+        /// 查询单个
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        public virtual TEntity QueryEntity(Expression<Func<TEntity, bool>> where)
+        {
+            return _dbset.Single(where);
         }
         #endregion
 

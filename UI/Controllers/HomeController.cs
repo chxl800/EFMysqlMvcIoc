@@ -32,24 +32,24 @@ namespace UI.Controllers
             return View();
         }
 
-        /// <summary>
-        /// 查询全部用户
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult All()
-        {
-            List<User> users = userService.GetUsers();
+        ///// <summary>
+        ///// 查询全部用户
+        ///// </summary>
+        ///// <returns></returns>
+        //public ActionResult All()
+        //{
+        //    List<User> users = userService.GetUsers();
 
-            return Json(users, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(users, JsonRequestBehavior.AllowGet);
+        //}
 
-        /// <summary>
-        /// 新增
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Add(User user)
-        {
-            return Json(user, JsonRequestBehavior.AllowGet);
-        }
+        ///// <summary>
+        ///// 新增
+        ///// </summary>
+        ///// <returns></returns>
+        //public ActionResult Add(User user)
+        //{
+        //    return Json(user, JsonRequestBehavior.AllowGet);
+        //}
     }
 }
