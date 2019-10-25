@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.DTO;
 using DAL;
+using DAL.Base;
 using Model;
 
 namespace Service.Impl
@@ -14,6 +16,7 @@ namespace Service.Impl
     /// </summary>
     public class UserService : IUserService
     {
+        DbContext db = DBContextFactory.GetDbContext();
         private IUserDAL userDAL;
         public UserService(IUserDAL userDAL)
         {
@@ -58,6 +61,30 @@ namespace Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public Result<List<User>> GetList(User user = null)
+        {
+            var result = new Result<List<User>>();
+            try
+            {
+                
+        
+                //var users = userDAL.QueryWhere(s => true);
+                //result.Successed(users);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+        }
+
+
+
+
 
         /// <summary>
         /// 新增
@@ -68,9 +95,14 @@ namespace Service.Impl
             var result = new Result();
             try
             {
-                userDAL.Add(user);
-                userDAL.SaveChanges();
-                result.Successed();
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    userDAL.Add(user);
+                    userDAL.SaveChanges();
+
+                    tran.Commit();
+                    result.Successed();
+                }
             }
             catch (Exception ex)
             {
@@ -88,9 +120,14 @@ namespace Service.Impl
             var result = new Result();
             try
             {
-                userDAL.Update(user, propertyNames);
-                userDAL.SaveChanges();
-                result.Successed();
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    userDAL.Update(user, propertyNames);
+                    userDAL.SaveChanges();
+
+                    tran.Commit();
+                    result.Successed();
+                }
             }
             catch (Exception ex)
             {
@@ -109,13 +146,17 @@ namespace Service.Impl
             var result = new Result();
             try
             {
-                var entity = userDAL.QueryEntity(s => s.Id == user.Id);
-                entity.Phone = user.Phone;
-                entity.RealName = user.RealName;
-                entity.Email = user.Email;
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    var entity = userDAL.QueryEntity(s => s.Id == user.Id);
+                    entity.Phone = user.Phone;
+                    entity.RealName = user.RealName;
+                    entity.Email = user.Email;
+                    userDAL.SaveChanges();
 
-                userDAL.SaveChanges();
-                result.Successed();
+                    tran.Commit();
+                    result.Successed();
+                }
             }
             catch (Exception ex)
             {
@@ -134,9 +175,15 @@ namespace Service.Impl
             var result = new Result();
             try
             {
-                userDAL.Delete(user);
-                userDAL.SaveChanges();
-                result.Successed();
+                using (var tran = db.Database.BeginTransaction())
+                {
+                    userDAL.Delete(user);
+                    userDAL.SaveChanges();
+
+                    tran.Commit();
+                    result.Successed();
+                }
+               
             }
             catch (Exception ex)
             {

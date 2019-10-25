@@ -16,6 +16,6 @@ namespace DAL.Base
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public virtual DbSet<User> User { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }
