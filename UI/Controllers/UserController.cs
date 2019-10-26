@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Model;
+using PagedList;
 using Service;
 
 namespace UI.Controllers
@@ -11,6 +12,15 @@ namespace UI.Controllers
         public UserController(IUserService userService)
         {
             this.userService = userService;
+        }
+
+        public ActionResult Index(int page = 1)
+        {
+            IPagedList<User> pageList = null;
+            var data = userService.GetUsers();
+
+            pageList = data.Data.ToPagedList(page, 1);
+            return View(pageList);
         }
 
         /// <summary>
