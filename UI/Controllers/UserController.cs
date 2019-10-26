@@ -34,6 +34,27 @@ namespace UI.Controllers
         }
 
         /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetListEF()
+        {
+            var data = userService.GetListEF();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetListLinq()
+        {
+            var data = userService.GetListLinq();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+        /// <summary>
         /// 新增
         /// </summary>
         /// <returns></returns>

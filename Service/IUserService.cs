@@ -22,6 +22,18 @@ namespace Service
         /// <returns></returns>
         Result<User> GetEntity(User user);
 
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        Result GetListEF(User user = null);
+
+
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        Result GetListLinq(User user = null);
 
 
         /// <summary>

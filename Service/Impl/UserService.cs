@@ -65,15 +65,13 @@ namespace Service.Impl
         /// 查询关联表
         /// </summary>
         /// <returns></returns>
-        public Result<List<User>> GetList(User user = null)
+        public Result GetListEF(User user = null)
         {
-            var result = new Result<List<User>>();
+            var result = new Result();
             try
             {
-                
-        
-                //var users = userDAL.QueryWhere(s => true);
-                //result.Successed(users);
+                var list = userDAL.GetListEF(user);
+                result.Successed(list);
             }
             catch (Exception ex)
             {
@@ -82,9 +80,24 @@ namespace Service.Impl
             return result;
         }
 
-
-
-
+        /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public Result GetListLinq(User user = null)
+        {
+            var result = new Result();
+            try
+            {
+                var list = userDAL.GetListLinq(user);
+                result.Successed(list);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+        }
 
         /// <summary>
         /// 新增

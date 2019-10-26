@@ -10,5 +10,18 @@ namespace DAL
 {
     public interface IUserDAL : IBaseDAL<User>
     {
+
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        object GetListEF(User user = null);
+
+
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        object GetListLinq(User user = null);
     }
 }

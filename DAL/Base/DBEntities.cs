@@ -17,5 +17,7 @@ namespace DAL.Base
         }
 
         public DbSet<User> User { get; set; }
+
+        public DbSet<UserRole> UserRole { get; set; }
     }
 }

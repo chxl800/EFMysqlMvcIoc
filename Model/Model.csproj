@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\User\UserRoleDto.cs" />
     <Compile Include="GroupRole.cs" />
     <Compile Include="Groups.cs" />
     <Compile Include="Module.cs" />
