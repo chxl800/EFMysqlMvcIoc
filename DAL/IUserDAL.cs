@@ -23,5 +23,17 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         object GetListLinq(User user = null);
+
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        object GetListSQL(User user = null);
+
+        /// <summary>
+        /// 修改SQL扩展
+        /// </summary>
+        /// <returns></returns>
+        object UpdateUesrSQL(User user = null);
     }
 }

@@ -35,6 +35,12 @@ namespace Service
         /// <returns></returns>
         Result GetListLinq(User user = null);
 
+        /// <summary>
+        /// 查询关联表扩展
+        /// </summary>
+        /// <returns></returns>
+        Result GetListSQL(User user = null);
+
 
         /// <summary>
         /// 新增
@@ -59,6 +65,12 @@ namespace Service
         /// </summary>
         /// <returns></returns>
         Result DeleteUser(User user);
-    
+
+        /// <summary>
+        /// 修改SQL扩展
+        /// </summary>
+        /// <returns></returns>
+        Result UpdateUesrSQL(User user = null);
+
     }
 }

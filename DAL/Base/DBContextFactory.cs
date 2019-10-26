@@ -10,12 +10,12 @@ namespace DAL.Base
         /// 上线问实例在线程内部是唯一的
         /// </summary>
         /// <returns></returns>
-        public static DbContext GetDbContext()
+        public static DBContext GetDbContext()
         {
-            DbContext dbContext = CallContext.GetData(typeof(DBContextFactory).Name) as DbContext;
+            DBContext dbContext = CallContext.GetData(typeof(DBContextFactory).Name) as DBContext;
             if (dbContext == null)
             {
-                dbContext = new DBEntities();
+                dbContext = new DBContext();
                 CallContext.SetData(typeof(DBContextFactory).Name, dbContext);
             }
             return dbContext;

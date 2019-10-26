@@ -100,6 +100,26 @@ namespace Service.Impl
         }
 
         /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public Result GetListSQL(User user = null)
+        {
+            var result = new Result();
+            try
+            {
+                var list = userDAL.GetListSQL(user);
+
+                result.Successed(list);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+        }
+
+        /// <summary>
         /// 新增
         /// </summary>
         /// <returns></returns>
@@ -204,6 +224,26 @@ namespace Service.Impl
             }
             return result;
             
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public Result UpdateUesrSQL(User user)
+        {
+            var result = new Result();
+            try
+            {
+                var data = userDAL.UpdateUesrSQL(user);
+                result.Successed(data);
+            }
+            catch (Exception ex)
+            {
+                result.Errored(ex.Message);
+            }
+            return result;
+
         }
     }
 }

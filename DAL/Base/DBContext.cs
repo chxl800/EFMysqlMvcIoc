@@ -4,9 +4,9 @@ using Model;
 
 namespace DAL.Base
 {
-    public class DBEntities : DbContext
+    public class DBContext : DbContext
     {
-        public DBEntities()
+        public DBContext()
            : base("name=DBEntities")
         {
         }

@@ -10,7 +10,7 @@ namespace DAL.Base
     public class BaseDAL<TEntity> : IBaseDAL<TEntity> where TEntity : class
     {
         //1.0  实例化EF上下文 
-        DbContext db = DBContextFactory.GetDbContext();
+        DBContext db = DBContextFactory.GetDbContext();
 
         //2.0 定义DbSet<T> 对象
         public DbSet<TEntity> _dbset;

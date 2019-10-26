@@ -20,7 +20,7 @@ namespace UI.Controllers
         public ActionResult GetUsers(User user)
         {
             var data = userService.GetUsers(user);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace UI.Controllers
         public ActionResult GetEntity(User user)
         {
             var data = userService.GetEntity(user);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace UI.Controllers
         public ActionResult GetListEF()
         {
             var data = userService.GetListEF();
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data);
         }
 
         /// <summary>
@@ -50,7 +50,17 @@ namespace UI.Controllers
         public ActionResult GetListLinq()
         {
             var data = userService.GetListLinq();
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(data);
+        }
+
+        /// <summary>
+        /// 查询关联表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetListSQL()
+        {
+            var data = userService.GetListSQL();
+            return Json(data);
         }
 
 
@@ -92,6 +102,16 @@ namespace UI.Controllers
         public ActionResult DeleteUser(User user)
         {
             var data = userService.DeleteUser(user);
+            return Json(data);
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpdateUesrSQL()
+        {
+            var data = userService.UpdateUesrSQL();
             return Json(data);
         }
     }

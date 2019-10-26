@@ -16,7 +16,7 @@ namespace UI.Controllers
                 Data = data,
                 ContentEncoding = contentEncoding,
                 ContentType = contentType,
-                JsonRequestBehavior = behavior,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
             };
         }
     }

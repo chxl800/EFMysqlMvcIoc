@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseDAL.cs" />
     <Compile Include="Base\DBContextFactory.cs" />
-    <Compile Include="Base\DBEntities.cs" />
+    <Compile Include="Base\DBContext.cs" />
     <Compile Include="Base\IBaseDAL.cs" />
     <Compile Include="Impl\UserDAL.cs" />
     <Compile Include="IUserDAL.cs" />
