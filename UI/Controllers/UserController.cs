@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Model;
 using PagedList;
@@ -21,6 +22,13 @@ namespace UI.Controllers
 
             pageList = data.Data.ToPagedList(page, 1);
             return View(pageList);
+        }
+
+        public ActionResult Info(string id)
+        {
+            User user = new User { Id = id };
+            var data = userService.GetEntity(user);
+            return View(data);
         }
 
         /// <summary>
@@ -78,19 +86,21 @@ namespace UI.Controllers
         /// 新增
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult AddUser(User user)
         {
             var data = userService.AddUser(user);
-            return Json(data);
+            return View("index");
         }
 
         /// <summary>
         /// 修改
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult UpdateUser(User user)
         {
-            string[] propertyNames = { "RealName", "Email" };
+            string[] propertyNames = { "UserName", "RealName", "Email", "Phone" };
             var data = userService.UpdateUser(user, propertyNames);
             return Json(data);
         }
@@ -99,6 +109,7 @@ namespace UI.Controllers
         /// 修改
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult UpdateUserAll(User user)
         {
             var data = userService.UpdateUserAll(user);

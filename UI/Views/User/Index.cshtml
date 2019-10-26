@@ -10,8 +10,12 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 <div class="container">
+
+    <p>
+        <a class="btn btn-default" href="@Url.Action("info")">Info</a>
+    </p>
     <table class="table table-hover">
-        <caption>...</caption>
+        <caption>查询不到记录</caption>
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,20 +27,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @if (Model != null)
             {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.UserName</td>
-                    <td>@item.RealName</td>
-                    <td>@item.Email</td>
-                    <td>@item.Phone</td>
-                    <td>...</td>
-                </tr>
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.UserName</td>
+                        <td>@item.RealName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>...</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
 
     @*<div class="text-center">
             <ul class="pagination">

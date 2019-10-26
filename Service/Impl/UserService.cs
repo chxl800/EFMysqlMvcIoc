@@ -130,6 +130,11 @@ namespace Service.Impl
             {
                 using (var tran = db.Database.BeginTransaction())
                 {
+                    user.Id = Guid.NewGuid().ToString("N");
+                    user.CreateTime = DateTime.Now;
+                    user.Creator = "0";
+                    user.Reviser = "0";
+                    user.Password = "123456";
                     userDAL.Add(user);
                     userDAL.SaveChanges();
 
