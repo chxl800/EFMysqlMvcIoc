@@ -20,7 +20,7 @@ namespace UI.Controllers
             IPagedList<User> pageList = null;
             var data = userService.GetUsers();
 
-            pageList = data.Data.ToPagedList(page, 1);
+            pageList = data.Data.ToPagedList(page, 10);
             return View(pageList);
         }
 
@@ -89,8 +89,13 @@ namespace UI.Controllers
         [HttpPost]
         public ActionResult AddUser(User user)
         {
-            var data = userService.AddUser(user);
-            return View("index");
+            userService.AddUser(user);
+
+            IPagedList<User> pageList = null;
+            var data = userService.GetUsers();
+
+            pageList = data.Data.ToPagedList(1, 10);
+            return View("index", pageList);
         }
 
         /// <summary>
@@ -101,8 +106,13 @@ namespace UI.Controllers
         public ActionResult UpdateUser(User user)
         {
             string[] propertyNames = { "UserName", "RealName", "Email", "Phone" };
-            var data = userService.UpdateUser(user, propertyNames);
-            return Json(data);
+            userService.UpdateUser(user, propertyNames);
+
+            IPagedList<User> pageList = null;
+            var data = userService.GetUsers();
+
+            pageList = data.Data.ToPagedList(1, 10);
+            return View("index", pageList);
         }
 
         /// <summary>
@@ -122,8 +132,13 @@ namespace UI.Controllers
         /// <returns></returns>
         public ActionResult DeleteUser(User user)
         {
-            var data = userService.DeleteUser(user);
-            return Json(data);
+            userService.DeleteUser(user);
+
+            IPagedList<User> pageList = null;
+            var data = userService.GetUsers();
+
+            pageList = data.Data.ToPagedList(1, 10);
+            return View("index", pageList);
         }
 
         /// <summary>

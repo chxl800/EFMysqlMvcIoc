@@ -12,7 +12,7 @@
 <div class="container">
 
     <p>
-        <a class="btn btn-default" href="@Url.Action("info")">Info</a>
+        <a class="btn btn-default" href="@Url.Action("Info")">Info</a>
     </p>
     <table class="table table-hover">
         <caption>查询不到记录</caption>
@@ -37,13 +37,16 @@
                         <td>@item.RealName</td>
                         <td>@item.Email</td>
                         <td>@item.Phone</td>
-                        <td>...</td>
+                        <td>
+                            <a class="btn btn-default" href="@Url.Action("Info","User",new { id=item.Id})">修改</a>&nbsp;&nbsp;
+                            <a class="btn btn-default" href="@Url.Action("DeleteUser","User",new { id=item.Id})">删除</a>&nbsp;&nbsp;
+                        </td>
                     </tr>
                 }
             }
         </tbody>
     </table>
-    @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
     @*<div class="text-center">
             <ul class="pagination">
