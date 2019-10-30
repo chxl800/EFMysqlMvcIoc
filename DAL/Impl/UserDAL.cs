@@ -20,7 +20,9 @@ namespace DAL.Impl
         public object GetListEF(User user = null)
         {
             //定义关联的实体
-             return db.User.Join(db.UserRole, u => u.Id, r => r.UserId, (u, r) => new UserRoleDto { Id=u.Id,UserName=u.UserName,RoleId= r.RoleId }).ToList();
+            //return db.User.GroupJoin(db.UserRole, u => u.Id, r => r.UserId, (u, r) => new { Id=u.Id,UserName=u.UserName,r }).ToList(); //左链接
+
+            return db.User.Join(db.UserRole, u => u.Id, r => r.UserId, (u, r) => new UserRoleDto { Id = u.Id, UserName = u.UserName, RoleId = r.RoleId }).ToList();
 
             //匿名输出
             //return db.User.Join(db.UserRole, u => u.Id, r => r.UserId, (u, r) => new { u, r.RoleId }).ToList();
